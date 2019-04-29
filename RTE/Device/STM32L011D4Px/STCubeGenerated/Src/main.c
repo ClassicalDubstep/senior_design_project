@@ -55,9 +55,9 @@ WWDG_HandleTypeDef hwwdg;
 /* USER CODE BEGIN PV */
 const uint8_t volume_levels[15] = {0, 3, 10, 15, 24, 33, 45, 58, 75, 94, 117, 144, 176, 214, 0};  // logarithmic volume levels in 1.5dB steps
 const uint16_t rheostat_address = 0x58, charger_address = 0x6B; // I2C slave addresses
-uint8_t UART_Tx_data[1], UART_Rx_data[8], rheostat_data[8]; // UART and I2C data byte arrays
+uint8_t UART_Tx_data[2], UART_Rx_data[8], rheostat_data[8]; // UART and I2C data byte arrays
 uint8_t current_volume = 0;
-uint32_t time0 = 0;
+uint32_t time0 = 0, time1 = 0, time2 = 0, poll_counter = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -418,29 +418,33 @@ static void MX_GPIO_Init(void)
 /* switches MCU between power states: run, low power run, and standby */
 static void power_state_handler(void)
 {
-	/* switch MCU to standby mode if BTM is in powered off state */
-	if(UART_Rx_data[1] == 0x00)
+	poll_counter++;
+	if(poll_counter == 500000)
 	{
-		HAL_PWR_EnableWakeUpPin(MFB_Pin);
-		HAL_PWR_EnterSTANDBYMode();
+		/* switch MCU to standby mode if BTM is in powered off state */
+		if(UART_Rx_data[1] == 0x00)	
+		{
+			HAL_PWR_EnableWakeUpPin(MFB_Pin);
+			HAL_PWR_EnterSTANDBYMode();
+		}
+		
+		else
+		{
+			/* swtich MCU to low power run mode and shutdown amplifier if no audio streaming */
+			if(UART_Rx_data[7] == 0x00)
+			{
+				HAL_PWREx_EnableLowPowerRunMode();
+				HAL_GPIO_WritePin(AMP_EN_GPIO_Port, AMP_EN_Pin, GPIO_PIN_RESET);
+				
+			}
+			/* swtich MCU to run mode and enable amplifier if there is audio streaming */
+			else if(UART_Rx_data[7] == 0x01)
+			{
+				HAL_PWREx_DisableLowPowerRunMode();
+				HAL_GPIO_WritePin(AMP_EN_GPIO_Port, AMP_EN_Pin, GPIO_PIN_SET);
+			}
+		}
 	}
-	
-	else
-	{
-		/* swtich MCU to low power run mode and shutdown amplifier if no audio streaming */
-		if(UART_Rx_data[7] == 0x00)
-		{
-			HAL_PWREx_EnableLowPowerRunMode();
-			HAL_GPIO_WritePin(AMP_EN_GPIO_Port, AMP_EN_Pin, GPIO_PIN_RESET);
-			
-		}
-		/* swtich MCU to run mode and enable amplifier if there is audio streaming */
-		else if(UART_Rx_data[7] == 0x01)
-		{
-			HAL_PWREx_DisableLowPowerRunMode();
-			HAL_GPIO_WritePin(AMP_EN_GPIO_Port, AMP_EN_Pin, GPIO_PIN_SET);
-		}
-	}	
 }
 
 /* poll BTM status every 500ms */
@@ -450,7 +454,7 @@ static void UART_Command_Handler(void)
 	{
 		UART_Tx_data[0] = 0x0D;
 	
-		HAL_UART_Transmit(&hlpuart1, UART_Tx_data, 1, 50);
+		HAL_UART_Transmit(&hlpuart1, UART_Tx_data, 	2, 50);
 		HAL_UART_Receive(&hlpuart1, UART_Rx_data, 8, 50);
 		if(UART_Rx_data[0] == 0x1E)
 		{
@@ -487,10 +491,14 @@ static void Bass_Volume(uint8_t volume)
 		 }
 		 else 
 			 rheostat_data[i] = volume_levels[volume]; //set resistor level
-	 }
-	HAL_GPIO_WritePin(AMP_EN_GPIO_Port, AMP_EN_Pin, GPIO_PIN_RESET);
-	HAL_I2C_Master_Transmit(&hi2c1, rheostat_address, rheostat_data, 8, 50); //do I2C transmission to MCP4452
-	HAL_GPIO_WritePin(AMP_EN_GPIO_Port, AMP_EN_Pin, GPIO_PIN_SET);
+	}
+	if(poll_counter == 500000)
+	{
+		HAL_GPIO_WritePin(AMP_EN_GPIO_Port, AMP_EN_Pin, GPIO_PIN_RESET);
+		HAL_I2C_Master_Transmit(&hi2c1, rheostat_address, rheostat_data, 8, 50); //do I2C transmission to MCP4452
+		HAL_GPIO_WritePin(AMP_EN_GPIO_Port, AMP_EN_Pin, GPIO_PIN_SET);
+		poll_counter = 0;
+	}
 }
 	
 /* returns: 0 = released, 1 = rising edge, 2 = pressed, 3 = falling edge */
@@ -516,7 +524,6 @@ uint8_t Button_State(GPIO_PinState button)
 /* returns duration button was pressed */
 uint32_t Button_Duration(GPIO_PinState button)
 {
-	uint32_t time1, time2;
 	switch (Button_State(button))
 	{
 		case 0:
@@ -529,12 +536,12 @@ uint32_t Button_Duration(GPIO_PinState button)
 		case 2:
 			break;
 		case 3:
-			time2 = HAL_GetTick() - time1;
+			time2 = HAL_GetTick();
 			break;
 		default:
 			break;
 	}
-	return time2;
+	return (time2 - time1);
 }
 
 /* returns button repeat amount */
@@ -543,8 +550,7 @@ uint8_t Bass_Adjust(GPIO_PinState button)
 	uint8_t button_repeat = 0;
 	while(Button_State(button) == 1 || Button_State(button) == 2)
 	{
-		if(Button_Duration(button)%500 == 0) //button repeat accumulator ever 500ms while pressed
-			button_repeat++;
+		button_repeat = Button_Duration(button)/500; //button repeat accumulator ever 500ms while pressed
 	}
 	return button_repeat;
 }
