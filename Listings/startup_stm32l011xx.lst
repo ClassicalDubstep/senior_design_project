@@ -410,20 +410,15 @@ ARM Macro Assembler    Page 7
               00000000 
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M0+ --apcs=inter
 work --depend=.\objects\startup_stm32l011xx.d -o.\objects\startup_stm32l011xx.o
- -I.\RTE\CMSIS -I.\RTE\CMSIS_Driver -I.\RTE\Device\STM32L011D4Px -I.\RTE\Device
-\STM32L011D4Px\STCubeGenerated\Inc -I.\RTE\_Target_1 -I"C:\Users\Dean Schreiber
-\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include" -I"C:\Users\Dean S
-chreiber\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Driver\Include" -I"C:\Us
-ers\Dean Schreiber\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\RTOS2\Include"
- -I"C:\Users\Dean Schreiber\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\RTOS2
-\RTX\Include" -I"C:\Users\Dean Schreiber\AppData\Local\Arm\Packs\Keil\STM32L0xx
-_DFP\2.0.1\Drivers\CMSIS\Device\ST\STM32L0xx\Include" -I"C:\Users\Dean Schreibe
-r\AppData\Local\Arm\Packs\Keil\STM32L0xx_DFP\2.0.1\Drivers\STM32L0xx_HAL_Driver
-\Inc" --predefine="__EVAL SETA 1" --predefine="__UVISION_VERSION SETA 527" --pr
-edefine="_RTE_ SETA 1" --predefine="STM32L011xx SETA 1" --list=.\listings\start
-up_stm32l011xx.lst "C:\Users\Dean Schreiber\Documents\senior design project\pro
-gramming\RTE\Device\STM32L011D4Px\STCubeGenerated\MDK-ARM\startup_stm32l011xx.s
-"
+ -I.\RTE\Device\STM32L011D4Px -I.\RTE\Device\STM32L011D4Px\STCubeGenerated\Inc 
+-I.\RTE\_Target_1 -IC:\Users\deans\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSI
+S\Core\Include -IC:\Users\deans\AppData\Local\Arm\Packs\Keil\STM32L0xx_DFP\2.0.
+1\Drivers\CMSIS\Device\ST\STM32L0xx\Include -IC:\Users\deans\AppData\Local\Arm\
+Packs\Keil\STM32L0xx_DFP\2.0.1\Drivers\STM32L0xx_HAL_Driver\Inc --predefine="__
+EVAL SETA 1" --predefine="__UVISION_VERSION SETA 527" --predefine="_RTE_ SETA 1
+" --predefine="STM32L011xx SETA 1" --list=.\listings\startup_stm32l011xx.lst "C
+:\Users\deans\Documents\Senior design project\Programming\RTE\Device\STM32L011D
+4Px\STCubeGenerated\MDK-ARM\startup_stm32l011xx.s"
 
 
 
@@ -434,7 +429,7 @@ STACK 00000000
 
 Symbol: STACK
    Definitions
-      At line 47 in file C:\Users\Dean
+      At line 47 in file C:\Users\deans\Documents\Senior
    Uses
       None
 Comment: STACK unused
@@ -442,19 +437,19 @@ Stack_Mem 00000000
 
 Symbol: Stack_Mem
    Definitions
-      At line 48 in file C:\Users\Dean
+      At line 48 in file C:\Users\deans\Documents\Senior
    Uses
-      At line 257 in file C:\Users\Dean
-      At line 259 in file C:\Users\Dean
+      At line 257 in file C:\Users\deans\Documents\Senior
+      At line 259 in file C:\Users\deans\Documents\Senior
 
 __initial_sp 00000400
 
 Symbol: __initial_sp
    Definitions
-      At line 49 in file C:\Users\Dean
+      At line 49 in file C:\Users\deans\Documents\Senior
    Uses
-      At line 73 in file C:\Users\Dean
-      At line 136 in file C:\Users\Dean
+      At line 73 in file C:\Users\deans\Documents\Senior
+      At line 136 in file C:\Users\deans\Documents\Senior
 
 3 symbols
 
@@ -467,7 +462,7 @@ HEAP 00000000
 
 Symbol: HEAP
    Definitions
-      At line 58 in file C:\Users\Dean
+      At line 58 in file C:\Users\deans\Documents\Senior
    Uses
       None
 Comment: HEAP unused
@@ -475,16 +470,16 @@ Heap_Mem 00000000
 
 Symbol: Heap_Mem
    Definitions
-      At line 60 in file C:\Users\Dean
+      At line 60 in file C:\Users\deans\Documents\Senior
    Uses
-      At line 256 in file C:\Users\Dean
-      At line 258 in file C:\Users\Dean
+      At line 256 in file C:\Users\deans\Documents\Senior
+      At line 258 in file C:\Users\deans\Documents\Senior
 
 __heap_base 00000000
 
 Symbol: __heap_base
    Definitions
-      At line 59 in file C:\Users\Dean
+      At line 59 in file C:\Users\deans\Documents\Senior
    Uses
       None
 Comment: __heap_base unused
@@ -492,7 +487,7 @@ __heap_limit 00000200
 
 Symbol: __heap_limit
    Definitions
-      At line 61 in file C:\Users\Dean
+      At line 61 in file C:\Users\deans\Documents\Senior
    Uses
       None
 Comment: __heap_limit unused
@@ -507,7 +502,7 @@ RESET 00000000
 
 Symbol: RESET
    Definitions
-      At line 68 in file C:\Users\Dean
+      At line 68 in file C:\Users\deans\Documents\Senior
    Uses
       None
 Comment: RESET unused
@@ -515,19 +510,19 @@ __Vectors 00000000
 
 Symbol: __Vectors
    Definitions
-      At line 73 in file C:\Users\Dean
+      At line 73 in file C:\Users\deans\Documents\Senior
    Uses
-      At line 69 in file C:\Users\Dean
-      At line 126 in file C:\Users\Dean
+      At line 69 in file C:\Users\deans\Documents\Senior
+      At line 126 in file C:\Users\deans\Documents\Senior
 
 __Vectors_End 000000C0
 
 Symbol: __Vectors_End
    Definitions
-      At line 124 in file C:\Users\Dean
+      At line 124 in file C:\Users\deans\Documents\Senior
    Uses
-      At line 70 in file C:\Users\Dean
-      At line 126 in file C:\Users\Dean
+      At line 70 in file C:\Users\deans\Documents\Senior
+      At line 126 in file C:\Users\deans\Documents\Senior
 
 3 symbols
 
@@ -540,7 +535,7 @@ Relocatable symbols
 
 Symbol: .text
    Definitions
-      At line 128 in file C:\Users\Dean
+      At line 128 in file C:\Users\deans\Documents\Senior
    Uses
       None
 Comment: .text unused
@@ -548,51 +543,51 @@ ADC1_COMP_IRQHandler 00000030
 
 Symbol: ADC1_COMP_IRQHandler
    Definitions
-      At line 225 in file C:\Users\Dean
+      At line 225 in file C:\Users\deans\Documents\Senior
    Uses
-      At line 103 in file C:\Users\Dean
-      At line 205 in file C:\Users\Dean
+      At line 103 in file C:\Users\deans\Documents\Senior
+      At line 205 in file C:\Users\deans\Documents\Senior
 
 ApplicationStart 0000001E
 
 Symbol: ApplicationStart
    Definitions
-      At line 161 in file C:\Users\Dean
+      At line 161 in file C:\Users\deans\Documents\Senior
    Uses
-      At line 147 in file C:\Users\Dean
+      At line 147 in file C:\Users\deans\Documents\Senior
 Comment: ApplicationStart used once
 DMA1_Channel1_IRQHandler 00000030
 
 Symbol: DMA1_Channel1_IRQHandler
    Definitions
-      At line 222 in file C:\Users\Dean
+      At line 222 in file C:\Users\deans\Documents\Senior
    Uses
-      At line 100 in file C:\Users\Dean
-      At line 202 in file C:\Users\Dean
+      At line 100 in file C:\Users\deans\Documents\Senior
+      At line 202 in file C:\Users\deans\Documents\Senior
 
 DMA1_Channel2_3_IRQHandler 00000030
 
 Symbol: DMA1_Channel2_3_IRQHandler
    Definitions
-      At line 223 in file C:\Users\Dean
+      At line 223 in file C:\Users\deans\Documents\Senior
    Uses
-      At line 101 in file C:\Users\Dean
-      At line 203 in file C:\Users\Dean
+      At line 101 in file C:\Users\deans\Documents\Senior
+      At line 203 in file C:\Users\deans\Documents\Senior
 
 DMA1_Channel4_5_IRQHandler 00000030
 
 Symbol: DMA1_Channel4_5_IRQHandler
    Definitions
-      At line 224 in file C:\Users\Dean
+      At line 224 in file C:\Users\deans\Documents\Senior
    Uses
-      At line 102 in file C:\Users\Dean
-      At line 204 in file C:\Users\Dean
+      At line 102 in file C:\Users\deans\Documents\Senior
+      At line 204 in file C:\Users\deans\Documents\Senior
 
 Default_Handler 00000030
 
 Symbol: Default_Handler
    Definitions
-      At line 192 in file C:\Users\Dean
+      At line 192 in file C:\Users\deans\Documents\Senior
    Uses
       None
 
@@ -606,55 +601,55 @@ EXTI0_1_IRQHandler 00000030
 
 Symbol: EXTI0_1_IRQHandler
    Definitions
-      At line 219 in file C:\Users\Dean
+      At line 219 in file C:\Users\deans\Documents\Senior
    Uses
-      At line 96 in file C:\Users\Dean
-      At line 199 in file C:\Users\Dean
+      At line 96 in file C:\Users\deans\Documents\Senior
+      At line 199 in file C:\Users\deans\Documents\Senior
 
 EXTI2_3_IRQHandler 00000030
 
 Symbol: EXTI2_3_IRQHandler
    Definitions
-      At line 220 in file C:\Users\Dean
+      At line 220 in file C:\Users\deans\Documents\Senior
    Uses
-      At line 97 in file C:\Users\Dean
-      At line 200 in file C:\Users\Dean
+      At line 97 in file C:\Users\deans\Documents\Senior
+      At line 200 in file C:\Users\deans\Documents\Senior
 
 EXTI4_15_IRQHandler 00000030
 
 Symbol: EXTI4_15_IRQHandler
    Definitions
-      At line 221 in file C:\Users\Dean
+      At line 221 in file C:\Users\deans\Documents\Senior
    Uses
-      At line 98 in file C:\Users\Dean
-      At line 201 in file C:\Users\Dean
+      At line 98 in file C:\Users\deans\Documents\Senior
+      At line 201 in file C:\Users\deans\Documents\Senior
 
 FLASH_IRQHandler 00000030
 
 Symbol: FLASH_IRQHandler
    Definitions
-      At line 217 in file C:\Users\Dean
+      At line 217 in file C:\Users\deans\Documents\Senior
    Uses
-      At line 94 in file C:\Users\Dean
-      At line 197 in file C:\Users\Dean
+      At line 94 in file C:\Users\deans\Documents\Senior
+      At line 197 in file C:\Users\deans\Documents\Senior
 
 HardFault_Handler 00000028
 
 Symbol: HardFault_Handler
    Definitions
-      At line 175 in file C:\Users\Dean
+      At line 175 in file C:\Users\deans\Documents\Senior
    Uses
-      At line 76 in file C:\Users\Dean
-      At line 176 in file C:\Users\Dean
+      At line 76 in file C:\Users\deans\Documents\Senior
+      At line 176 in file C:\Users\deans\Documents\Senior
 
 I2C1_IRQHandler 00000030
 
 Symbol: I2C1_IRQHandler
    Definitions
-      At line 229 in file C:\Users\Dean
+      At line 229 in file C:\Users\deans\Documents\Senior
    Uses
-      At line 114 in file C:\Users\Dean
-      At line 209 in file C:\Users\Dean
+      At line 114 in file C:\Users\deans\Documents\Senior
+      At line 209 in file C:\Users\deans\Documents\Senior
 
 LPTIM1_IRQHandler 00000030
 
@@ -666,64 +661,64 @@ Symbol: LPTIM1_IRQHandler
 ARM Macro Assembler    Page 3 Alphabetic symbol ordering
 Relocatable symbols
 
-      At line 226 in file C:\Users\Dean
+      At line 226 in file C:\Users\deans\Documents\Senior
    Uses
-      At line 104 in file C:\Users\Dean
-      At line 206 in file C:\Users\Dean
+      At line 104 in file C:\Users\deans\Documents\Senior
+      At line 206 in file C:\Users\deans\Documents\Senior
 
 LPUART1_IRQHandler 00000030
 
 Symbol: LPUART1_IRQHandler
    Definitions
-      At line 232 in file C:\Users\Dean
+      At line 232 in file C:\Users\deans\Documents\Senior
    Uses
-      At line 120 in file C:\Users\Dean
-      At line 212 in file C:\Users\Dean
+      At line 120 in file C:\Users\deans\Documents\Senior
+      At line 212 in file C:\Users\deans\Documents\Senior
 
 NMI_Handler 00000026
 
 Symbol: NMI_Handler
    Definitions
-      At line 170 in file C:\Users\Dean
+      At line 170 in file C:\Users\deans\Documents\Senior
    Uses
-      At line 75 in file C:\Users\Dean
-      At line 171 in file C:\Users\Dean
+      At line 75 in file C:\Users\deans\Documents\Senior
+      At line 171 in file C:\Users\deans\Documents\Senior
 
 PVD_IRQHandler 00000030
 
 Symbol: PVD_IRQHandler
    Definitions
-      At line 215 in file C:\Users\Dean
+      At line 215 in file C:\Users\deans\Documents\Senior
    Uses
-      At line 92 in file C:\Users\Dean
-      At line 195 in file C:\Users\Dean
+      At line 92 in file C:\Users\deans\Documents\Senior
+      At line 195 in file C:\Users\deans\Documents\Senior
 
 PendSV_Handler 0000002C
 
 Symbol: PendSV_Handler
    Definitions
-      At line 183 in file C:\Users\Dean
+      At line 183 in file C:\Users\deans\Documents\Senior
    Uses
-      At line 87 in file C:\Users\Dean
-      At line 184 in file C:\Users\Dean
+      At line 87 in file C:\Users\deans\Documents\Senior
+      At line 184 in file C:\Users\deans\Documents\Senior
 
 RCC_IRQHandler 00000030
 
 Symbol: RCC_IRQHandler
    Definitions
-      At line 218 in file C:\Users\Dean
+      At line 218 in file C:\Users\deans\Documents\Senior
    Uses
-      At line 95 in file C:\Users\Dean
-      At line 198 in file C:\Users\Dean
+      At line 95 in file C:\Users\deans\Documents\Senior
+      At line 198 in file C:\Users\deans\Documents\Senior
 
 RTC_IRQHandler 00000030
 
 Symbol: RTC_IRQHandler
    Definitions
-      At line 216 in file C:\Users\Dean
+      At line 216 in file C:\Users\deans\Documents\Senior
    Uses
-      At line 93 in file C:\Users\Dean
-      At line 196 in file C:\Users\Dean
+      At line 93 in file C:\Users\deans\Documents\Senior
+      At line 196 in file C:\Users\deans\Documents\Senior
 
 
 
@@ -735,61 +730,61 @@ Reset_Handler 00000000
 
 Symbol: Reset_Handler
    Definitions
-      At line 131 in file C:\Users\Dean
+      At line 131 in file C:\Users\deans\Documents\Senior
    Uses
-      At line 74 in file C:\Users\Dean
-      At line 132 in file C:\Users\Dean
+      At line 74 in file C:\Users\deans\Documents\Senior
+      At line 132 in file C:\Users\deans\Documents\Senior
 
 SPI1_IRQHandler 00000030
 
 Symbol: SPI1_IRQHandler
    Definitions
-      At line 230 in file C:\Users\Dean
+      At line 230 in file C:\Users\deans\Documents\Senior
    Uses
-      At line 116 in file C:\Users\Dean
-      At line 210 in file C:\Users\Dean
+      At line 116 in file C:\Users\deans\Documents\Senior
+      At line 210 in file C:\Users\deans\Documents\Senior
 
 SVC_Handler 0000002A
 
 Symbol: SVC_Handler
    Definitions
-      At line 179 in file C:\Users\Dean
+      At line 179 in file C:\Users\deans\Documents\Senior
    Uses
-      At line 84 in file C:\Users\Dean
-      At line 180 in file C:\Users\Dean
+      At line 84 in file C:\Users\deans\Documents\Senior
+      At line 180 in file C:\Users\deans\Documents\Senior
 
 SysTick_Handler 0000002E
 
 Symbol: SysTick_Handler
    Definitions
-      At line 187 in file C:\Users\Dean
+      At line 187 in file C:\Users\deans\Documents\Senior
    Uses
-      At line 88 in file C:\Users\Dean
-      At line 188 in file C:\Users\Dean
+      At line 88 in file C:\Users\deans\Documents\Senior
+      At line 188 in file C:\Users\deans\Documents\Senior
 
 TIM21_IRQHandler 00000030
 
 Symbol: TIM21_IRQHandler
    Definitions
-      At line 228 in file C:\Users\Dean
+      At line 228 in file C:\Users\deans\Documents\Senior
    Uses
-      At line 111 in file C:\Users\Dean
-      At line 208 in file C:\Users\Dean
+      At line 111 in file C:\Users\deans\Documents\Senior
+      At line 208 in file C:\Users\deans\Documents\Senior
 
 TIM2_IRQHandler 00000030
 
 Symbol: TIM2_IRQHandler
    Definitions
-      At line 227 in file C:\Users\Dean
+      At line 227 in file C:\Users\deans\Documents\Senior
    Uses
-      At line 106 in file C:\Users\Dean
-      At line 207 in file C:\Users\Dean
+      At line 106 in file C:\Users\deans\Documents\Senior
+      At line 207 in file C:\Users\deans\Documents\Senior
 
 USART2_IRQHandler 00000030
 
 Symbol: USART2_IRQHandler
    Definitions
-      At line 231 in file C:\Users\Dean
+      At line 231 in file C:\Users\deans\Documents\Senior
 
 
 
@@ -797,25 +792,25 @@ ARM Macro Assembler    Page 5 Alphabetic symbol ordering
 Relocatable symbols
 
    Uses
-      At line 119 in file C:\Users\Dean
-      At line 211 in file C:\Users\Dean
+      At line 119 in file C:\Users\deans\Documents\Senior
+      At line 211 in file C:\Users\deans\Documents\Senior
 
 WWDG_IRQHandler 00000030
 
 Symbol: WWDG_IRQHandler
    Definitions
-      At line 214 in file C:\Users\Dean
+      At line 214 in file C:\Users\deans\Documents\Senior
    Uses
-      At line 91 in file C:\Users\Dean
-      At line 194 in file C:\Users\Dean
+      At line 91 in file C:\Users\deans\Documents\Senior
+      At line 194 in file C:\Users\deans\Documents\Senior
 
 __user_initial_stackheap 00000034
 
 Symbol: __user_initial_stackheap
    Definitions
-      At line 254 in file C:\Users\Dean
+      At line 254 in file C:\Users\deans\Documents\Senior
    Uses
-      At line 252 in file C:\Users\Dean
+      At line 252 in file C:\Users\deans\Documents\Senior
 Comment: __user_initial_stackheap used once
 29 symbols
 
@@ -828,27 +823,27 @@ Heap_Size 00000200
 
 Symbol: Heap_Size
    Definitions
-      At line 56 in file C:\Users\Dean
+      At line 56 in file C:\Users\deans\Documents\Senior
    Uses
-      At line 60 in file C:\Users\Dean
-      At line 258 in file C:\Users\Dean
+      At line 60 in file C:\Users\deans\Documents\Senior
+      At line 258 in file C:\Users\deans\Documents\Senior
 
 Stack_Size 00000400
 
 Symbol: Stack_Size
    Definitions
-      At line 45 in file C:\Users\Dean
+      At line 45 in file C:\Users\deans\Documents\Senior
    Uses
-      At line 48 in file C:\Users\Dean
-      At line 257 in file C:\Users\Dean
+      At line 48 in file C:\Users\deans\Documents\Senior
+      At line 257 in file C:\Users\deans\Documents\Senior
 
 __Vectors_Size 000000C0
 
 Symbol: __Vectors_Size
    Definitions
-      At line 126 in file C:\Users\Dean
+      At line 126 in file C:\Users\deans\Documents\Senior
    Uses
-      At line 71 in file C:\Users\Dean
+      At line 71 in file C:\Users\deans\Documents\Senior
 Comment: __Vectors_Size used once
 3 symbols
 
@@ -861,23 +856,23 @@ SystemInit 00000000
 
 Symbol: SystemInit
    Definitions
-      At line 134 in file C:\Users\Dean
+      At line 134 in file C:\Users\deans\Documents\Senior
    Uses
-      At line 162 in file C:\Users\Dean
+      At line 162 in file C:\Users\deans\Documents\Senior
 Comment: SystemInit used once
 __main 00000000
 
 Symbol: __main
    Definitions
-      At line 133 in file C:\Users\Dean
+      At line 133 in file C:\Users\deans\Documents\Senior
    Uses
-      At line 164 in file C:\Users\Dean
+      At line 164 in file C:\Users\deans\Documents\Senior
 Comment: __main used once
 __use_two_region_memory 00000000
 
 Symbol: __use_two_region_memory
    Definitions
-      At line 251 in file C:\Users\Dean
+      At line 251 in file C:\Users\deans\Documents\Senior
    Uses
       None
 Comment: __use_two_region_memory unused
