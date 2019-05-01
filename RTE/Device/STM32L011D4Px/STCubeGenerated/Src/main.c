@@ -56,8 +56,8 @@ WWDG_HandleTypeDef hwwdg;
 const uint8_t volume_levels[15] = {0, 3, 10, 15, 24, 33, 45, 58, 75, 94, 117, 144, 176, 214, 0};  // logarithmic volume levels in 1.5dB steps
 const uint16_t rheostat_address = 0x58, charger_address = 0x6B; // I2C slave addresses
 uint8_t UART_Tx_data[2], UART_Rx_data[8], rheostat_data[8]; // UART and I2C data byte arrays
-uint8_t current_volume = 0;
-uint32_t time0 = 0;
+uint8_t current_volume = 0, previous_volume = 0;
+uint32_t time0 = 0, time1 = 0, time2 = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -474,29 +474,23 @@ static void Bass_Volume(uint8_t volume)
 		 else 
 			 rheostat_data[i] = volume_levels[volume]; //set resistor level
 	}
-		HAL_GPIO_WritePin(AMP_EN_GPIO_Port, AMP_EN_Pin, GPIO_PIN_RESET);
-		HAL_I2C_Master_Transmit(&hi2c1, rheostat_address, rheostat_data, 8, 50); //do I2C transmission to MCP4452
-		HAL_GPIO_WritePin(AMP_EN_GPIO_Port, AMP_EN_Pin, GPIO_PIN_SET);
-		
+	HAL_GPIO_WritePin(AMP_EN_GPIO_Port, AMP_EN_Pin, GPIO_PIN_RESET);
+	HAL_I2C_Master_Transmit(&hi2c1, rheostat_address, rheostat_data, 8, 50); //do I2C transmission to MCP4452
+	HAL_GPIO_WritePin(AMP_EN_GPIO_Port, AMP_EN_Pin, GPIO_PIN_SET);
 }
 	
-/* returns: 0 = released, 1 = rising edge, 2 = pressed, 3 = falling edge */
+/* button debouncing */
 uint8_t Button_State(GPIO_PinState button)
 {
 	GPIO_PinState button_previous = button;
-	if(button == button_previous)
+	if(button == GPIO_PIN_SET)
 	{
-		if(button == GPIO_PIN_SET)
-			return 0;
-		else
-			return 3;
-	}
-	else
-	{
-		if(button == GPIO_PIN_SET)
+		if(button != button_previous)
+			time1 = HAL_GetTick(); //get initial time once transition occurs
+		if((HAL_GetTick() - time1) >= 30)
 			return 1;
 		else
-			return 2;
+			return 0;
 	}
 }
 
@@ -504,7 +498,7 @@ void Bass_Adjust(void)
 {
 	if(Button_State(HAL_GPIO_ReadPin(BASS_UP_GPIO_Port, BASS_UP_Pin)) == 1)
 	{
-		if(current_volume != 14)
+		if(current_volume != 14 && current_volume == previous_volume) //don't increase past minimum volume level and only change 1 step
 		{
 			current_volume++;
 			Bass_Volume(current_volume);
@@ -512,12 +506,14 @@ void Bass_Adjust(void)
 	}
 	else if(Button_State(HAL_GPIO_ReadPin(BASS_DN_GPIO_Port, BASS_DN_Pin)) == 1)
 	{
-		if(current_volume != 0)
+		if(current_volume != 0 && current_volume == previous_volume) //don't decrease past minimum volume level and only change by 1 step
 		{
 			current_volume--;
 			Bass_Volume(current_volume);
-		}			
+		}
 	}
+	else
+		previous_volume = current_volume;	
 }
 /* USER CODE END 4 */
 
